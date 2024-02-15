@@ -18,6 +18,16 @@ export default {
                 montserrat: ["Montserrat", ...defaultTheme.fontFamily.sans],
                 crimson: ["Crimson Text", ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                white: {
+                    DEFAULT: "#ffffff",
+                    100: "#f8f7f4",
+                    200: "#fbfff4",
+                    300: "#fffef7",
+                    400: "#fff5ee",
+                    500: "#fff5ea",
+                },
+            },
         },
     },
 

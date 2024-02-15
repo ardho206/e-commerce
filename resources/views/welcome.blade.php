@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="w-full h-[31rem]">
+    <div class="w-full h-[41rem]">
         <img src="{{ asset('image/banner.png') }}" alt=""
             class="object-fill object-center w-full h-full rounded-lg">
     </div>

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Livewire\Volt\Volt;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::middleware(['auth', 'verified', 'can:isAdmin'])->group(function () {
+    Route::view('orders', 'dashboard.orders')->name('orders');
+    Route::view('products', 'dashboard.product')->name('product');
+    Volt::route('customer', 'customer.index')->name('customer');
+    Route::view('dashboard', 'dashboard.index')->name('dashboard');
+
+    Volt::route('add-product', 'product.add-product')->name('add-product');
+});
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])

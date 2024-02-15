@@ -17,8 +17,8 @@ new class extends Component {
 
 ?>
 
-<nav class="py-2 px-5 shadow-md sticky top-0 left-0 right-0 bg-white/50 backdrop-blur-md z-50">
-    <div class="flex justify-between items-center mt-1 font-montserrat">
+<nav class="py-3 px-5 shadow-md sticky top-0 left-0 right-0 bg-white/50 backdrop-blur-md z-50">
+    <div class="flex justify-between items-center font-montserrat">
         <a wire:navigate href="/"
             class="font-crimson font-bold text-2xl uppercase tracking-tight bg-left-bottom bg-gradient-to-r from-black to-black bg-[length:0%_3px] bg-no-repeat hover:bg-[length:100%_3px] transition-all duration-500 ease-in-out">svelt</a>
         <ul class="flex space-x-3 text-sm font-medium capitalize text-black">
@@ -57,6 +57,11 @@ new class extends Component {
                         </x-slot>
 
                         <x-slot name="content">
+                            @can('isAdmin', Auth::user()->role)
+                                <x-dropdown-link :href="route('dashboard')" wire:navigate>
+                                    {{ __('Dashboard') }}
+                                </x-dropdown-link>
+                            @endcan
                             <x-dropdown-link :href="route('profile')" wire:navigate>
                                 {{ __('Profile') }}
                             </x-dropdown-link>
